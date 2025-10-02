@@ -1,5 +1,7 @@
+#Hadyn Miethe
+#I make sure to ask verification before adding or removing from the cart.
+
 #Practice Lab: Cafe order manager
-import math
 
 
 '''
