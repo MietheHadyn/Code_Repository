@@ -1,0 +1,14 @@
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\obj\Debug\net8.0\Cafe-NowPokeshop.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\obj\Debug\net8.0\Cafe-NowPokeshop.AssemblyInfoInputs.cache
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\obj\Debug\net8.0\Cafe-NowPokeshop.AssemblyInfo.cs
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\obj\Debug\net8.0\Cafe-NowPokeshop.csproj.CoreCompileInputs.cache
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\bin\Debug\net8.0\Cafe-NowPokeshop.exe
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\bin\Debug\net8.0\Cafe-NowPokeshop.deps.json
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\bin\Debug\net8.0\Cafe-NowPokeshop.runtimeconfig.json
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\bin\Debug\net8.0\Cafe-NowPokeshop.dll
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\bin\Debug\net8.0\Cafe-NowPokeshop.pdb
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\obj\Debug\net8.0\Cafe-NowPokeshop.dll
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\obj\Debug\net8.0\refint\Cafe-NowPokeshop.dll
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\obj\Debug\net8.0\Cafe-NowPokeshop.pdb
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\obj\Debug\net8.0\Cafe-NowPokeshop.genruntimeconfig.cache
+C:\Users\MIETHEH\source\repos\Cafe-NowPokeshop\Cafe-NowPokeshop\obj\Debug\net8.0\ref\Cafe-NowPokeshop.dll
