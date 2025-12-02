@@ -13,10 +13,10 @@ namespace Final_Project
     {
 
         public int ItemID;
-        public string ItemName;
-        public string MediaType;
+        public string? ItemName;
+        public string? MediaType;
         public double LateFee;
-        
+        //the ? means it can be null, needed (so far) to parse out the vairables from loading a file
 
         
 
@@ -41,6 +41,9 @@ namespace Final_Project
             this.LateFee = v4;
             
         }
+
+        public CheckoutItems() { }  // allows new CheckoutItem() with no arguments
+
 
         //define duedate
         public DateOnly DueDate()
@@ -102,7 +105,7 @@ namespace Final_Project
         //format each item to a string to save into file
         public string FormatItem()
         {
-             return $" ID: {ItemID.ToString()} | Item Name: {ItemName} | Media Type: {MediaType} | Late Fee: {LateFee.ToString("C")} | Days Late: {DaysLate}";
+             return $" ID: {ItemID.ToString()} | Item: {ItemName} | Media Type: {MediaType} | Late Fee: {LateFee.ToString("C")} | Days Late: {DaysLate}";
                
         }
 

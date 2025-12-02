@@ -9,24 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 namespace Final_Project
 {
 
-            /*
-             1. add library Item (add do a library class ig) (add to catalog file)
-
-             2. View available items (simple printing) ((use "available" boolean)) !CHECK!
-                2b. 
-
-             3. Check out an item (add it to one's CheckedOut class)  (use CheckedOutDate, currentDate, dueDate)
-
-             4. Return an item (remove from CheckedOut, return it to library)
-
-             5. View my CheckedOut receipt (simple printing)
-
-             6. Save my CheckedOut list to file (use similar file Save/load from Cafe)
-
-             7. Load my previous CheckedOut list from file (use similar file Save/load from Cafe)
-
-             8. Exit 
-             */
+            
 
     //manipulate all lists (adding/removing books from gathered like the cart from the cafe) via THE !!ID NUMBER!!
     internal class Program
@@ -64,7 +47,7 @@ namespace Final_Project
             //print main menu
             Console.WriteLine("=====================================");
             Console.WriteLine("1. View Library Catalog");  //specify available vs not via BOOL
-            Console.WriteLine("2. Add to Library Catalog");  // ensure all details are added
+            Console.WriteLine("2. Add to Library Catalog");  //ensure all details are added
             Console.WriteLine("3. Gather Books to Check Out");
             Console.WriteLine("4. View Gathered Books");
             Console.WriteLine("5. Return from Gathered Books");
@@ -87,7 +70,7 @@ namespace Final_Project
             if (MMInput == 0)
             {
                 Console.WriteLine("Exiting...");
-                Environment.Exit(0); // Exit with success code
+                Environment.Exit(0); //Exit with success code
 
             }
 
@@ -97,7 +80,7 @@ namespace Final_Project
                 MainMenu();
             }
 
-            //actual comands/requests
+            //actual commands/requests
             if (MMInput == 1) //View Library Catalogue
             {
                 LibraryItems.ViewCatalog();
@@ -142,7 +125,7 @@ namespace Final_Project
                 MainMenu();
             }
 
-            if (MMInput == 7) //view checked out books reciept
+            if (MMInput == 7) //view checked out books receipt
             {
                 CheckoutItems.ViewCheckout();
                 Console.WriteLine("   ");
@@ -151,7 +134,6 @@ namespace Final_Project
 
             if (MMInput == 8) // save/load checked out books to file
             {
-                Console.WriteLine("CODE IN PROGRESS");
                 SaveLoadFile();
                 Console.WriteLine("   ");
                 MainMenu();
@@ -166,7 +148,7 @@ namespace Final_Project
 
             else
             {
-                Console.WriteLine("invalid input, please select an option withing range");
+                Console.WriteLine("invalid input, please select an option within range");
                 MainMenu();
             }
         }
@@ -207,7 +189,7 @@ namespace Final_Project
             v4 = lateFee; //assert it as the correct variable
             Console.WriteLine($"{v4:C}"); //:C means currency
 
-            //this increments the new item id bt +1 and saves the value
+            //this increments the new item id by +1 and saves the value
             int v1 = LibraryItems.catalog.Any() ? LibraryItems.catalog.Max(i => i.itemID) + 1 : 101;
             //this creates the item and tells you it's been created.
             LibraryItems.catalog.Add(new LibraryItems(v1, v2, v3, v4, true));
@@ -247,7 +229,7 @@ namespace Final_Project
 
                         //actual item adding code
                         
-                        var product = LibraryItems.catalog.FirstOrDefault(p => p.itemID == gatheredItem); //note:FirstOrDefault returns the first element that satisifes the condition, or a default if it doesn't exist
+                        var product = LibraryItems.catalog.FirstOrDefault(p => p.itemID == gatheredItem); //note:FirstOrDefault returns the first element that satisfies the condition, or a default if it doesn't exist
                         if (product != null)
                         {
                             Console.WriteLine($"\nFound Item: {product.itemName} Media type: {product.mediaType}  Late fee: {product.lateFee}");
@@ -260,13 +242,13 @@ namespace Final_Project
 
                         if (product.available)
                         {
-                            Console.WriteLine($"You selected item {gatheredItem} -- Item Avaiable! Now gathered.");
+                            Console.WriteLine($"You selected item {gatheredItem} -- Item Available! Now gathered.");
                             Gathered.Add(product.itemID);
                             product.toggleAvailability();
                         }
                         else
                         {
-                            Console.WriteLine($"You selected item {gatheredItem} -- Item Unavaiable! select a different item or exit.");
+                            Console.WriteLine($"You selected item {gatheredItem} -- Item Unavailable! select a different item or exit.");
                         }
 
                             break;
@@ -337,7 +319,7 @@ namespace Final_Project
                             continue;
                         }
 
-                        var product = LibraryItems.catalog.FirstOrDefault(p => p.itemID == rmvInput); //note:FirstOrDefault returns the first element that satisifes the condition, or a default if it doesn't exist
+                        var product = LibraryItems.catalog.FirstOrDefault(p => p.itemID == rmvInput); //note:FirstOrDefault returns the first element that satisfies the condition, or a default if it doesn't exist
                         if (product != null)
                         {
                             Console.WriteLine($"\nFound Item: {product.itemName} Media type: {product.mediaType}  Late fee: {product.lateFee}");
@@ -394,6 +376,7 @@ namespace Final_Project
             // validate Y/N answer 
             while (true)
             {
+                
                 Console.Write("Would you like to return a checked out item? (Y/N): ");
                 string orderBOOL = Console.ReadLine()?.Trim().ToUpperInvariant();
 
@@ -401,6 +384,7 @@ namespace Final_Project
                 {
                     // print cart for each loop
                     CheckoutItems.ViewCheckout();
+
 
                     // ask item number w/ validation
                     while (true)
@@ -425,8 +409,8 @@ namespace Final_Project
                             continue;
                         }
 
-                        //product is a refernce variable and is unique, no need to specify by ID
-                        var product = CheckoutItems.checkoutCatalog.FirstOrDefault(p => p.ItemID == rmvInput); //note:FirstOrDefault returns the first element that satisifes the condition, or a default if it doesn't exist
+                        //product is a reference variable and is unique, no need to specify by ID
+                        var product = CheckoutItems.checkoutCatalog.FirstOrDefault(p => p.ItemID == rmvInput); //note:FirstOrDefault returns the first element that satisfies the condition, or a default if it doesn't exist
                         if (product != null)
                         {
                              decimal totalfee = CheckoutItems.CalcLateFeeTotal();
@@ -476,10 +460,10 @@ namespace Final_Project
 
             Tell it to load it separating attributes by commas, and objects by new lines (how? idk we'll learn)
              */
-            //string ItmFileType = "txt";
-            //string ItmFileName = "Checkout_File";
-            //string Itempath = $@"{ItmFileName}.{ItmFileType}";
-            string Itempath = "Checkout_File.txt";
+            string ItmFileType = "txt";
+            string ItmFileName = "Checkout_File";
+            string Itempath = $@"{ItmFileName}.{ItmFileType}";
+            
 
 
             Console.WriteLine("Save or Load Checkout file? (Type S or L)");
@@ -491,7 +475,7 @@ namespace Final_Project
                 //code to save to file
                 foreach( var item in CheckoutItems.checkoutCatalog)
                 {
-                   File.AppendAllText(Itempath, item.FormatItem());
+                   File.AppendAllText(Itempath, item.FormatItem() + Environment.NewLine); //saves the Checkout into the txt file and tacks a new line
                 }
                 if (File.Exists(Itempath))
                 {
@@ -499,7 +483,7 @@ namespace Final_Project
                 }
                 else
                 {
-                    Console.WriteLine("Cart Items file NOT created.");
+                    Console.WriteLine("Cart Items file NOT created. Make sure to check out before creating the file.");
                 }
 
             }
@@ -514,23 +498,48 @@ namespace Final_Project
                     //split on pipe
                     foreach (var line in FileItems)
                     {
-                        string[] parts = line.Split('|');   // split this line on '|'
+                        string[] parts = line.Split('|');  //split this line on '|'
 
                         foreach (var part in parts)
                         {
-                            Console.WriteLine(part.Trim()); // do something with each part
+                            Console.WriteLine(part.Trim()); //do something with each part
 
                             for (int i = 0; i < parts.Length; i++)
                             {
                                 parts[i] = parts[i].Trim();
+                                var item = new CheckoutItems();
 
-                                //slpit variable name from value
+                                //split variable name from value
                                 var keyValue = part.Split(':');
-                                string key = keyValue[0].Trim();   // e.g. "ID" or "Item Name"
-                                string value = keyValue[1].Trim(); // e.g. "101" or "Basics of Reading"
-                                Console.WriteLine($"{key} => {value}"); //delete once I know this works
+                                string key = keyValue[0].Trim();   //e.g. "ID" or "Item Name"
+                                string value = keyValue[1].Trim(); //e.g. "101" or "Basics of Reading"
+                                Console.WriteLine($"{key} => {value}"); //delete once I know this works(?)
+
+                                switch (key)  //this maps each value into its proper attribute, making sure the id goes in id, name in name, and so on
+                                {
+                                    case "ID":
+                                        item.ItemID = int.Parse(value);
+                                        break;
+                                    case "Item":
+                                        item.ItemName = value;
+                                        break;
+                                    case "Media Type":
+                                        item.MediaType = value;
+                                        break;
+                                    case "Late Fee":
+                                        item.LateFee = double.Parse(value,
+                                            System.Globalization.NumberStyles.Currency);
+                                        break;
+                                    case "Days Late":
+                                        item.DaysLate = int.Parse(value);
+                                        break;
+                                }
+                                CheckoutItems.checkoutCatalog.Add(item);
+                                
+                                Console.WriteLine($"{item.ItemID}, {item.ItemName}, {item.MediaType}, {item.LateFee}, {item.DaysLate}");
                             }
                         }
+                        
                     }
                     
                     
