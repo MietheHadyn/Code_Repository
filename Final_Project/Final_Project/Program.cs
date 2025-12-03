@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data.Common;
 using System.IO;
 using System.Numerics;
@@ -490,67 +490,51 @@ namespace Final_Project
             else if(SaveORLoad == "L")
             {
                 //code to load file
+
                 try
                 {
-                    //code to load and parse the TXT file
 
                     var FileItems = File.ReadAllLines(Itempath);
-                    //split on pipe
                     foreach (var line in FileItems)
                     {
-                        string[] parts = line.Split('|');  //split this line on '|'
+                        string[] parts = line.Split('|');  // split line on '|'
+                        var item = new CheckoutItems();    // create ONE item per line
 
                         foreach (var part in parts)
                         {
-                            Console.WriteLine(part.Trim()); //do something with each part
+                            string[] keyValue = part.Split(':');
+                            if (keyValue.Length < 2) continue; // skip malformed entries
 
-                            for (int i = 0; i < parts.Length; i++)
+                            string key = keyValue[0].Trim(); //e.g. "ID" or "Item Name"
+                            string value = keyValue[1].Trim(); //e.g. "101" or "Basics of Reading"
+
+                            switch (key)  //this maps each value into its proper attribute, making sure the id goes in id, name in name, and so on
                             {
-                                parts[i] = parts[i].Trim();
-                                var item = new CheckoutItems();
-
-                                //split variable name from value
-                                var keyValue = part.Split(':');
-                                string key = keyValue[0].Trim();   //e.g. "ID" or "Item Name"
-                                string value = keyValue[1].Trim(); //e.g. "101" or "Basics of Reading"
-                                Console.WriteLine($"{key} => {value}"); //delete once I know this works(?)
-
-                                switch (key)  //this maps each value into its proper attribute, making sure the id goes in id, name in name, and so on
-                                {
-                                    case "ID":
-                                        item.ItemID = int.Parse(value);
-                                        break;
-                                    case "Item":
-                                        item.ItemName = value;
-                                        break;
-                                    case "Media Type":
-                                        item.MediaType = value;
-                                        break;
-                                    case "Late Fee":
-                                        item.LateFee = double.Parse(value,
-                                            System.Globalization.NumberStyles.Currency);
-                                        break;
-                                    case "Days Late":
-                                        item.DaysLate = int.Parse(value);
-                                        break;
-                                }
-                                CheckoutItems.checkoutCatalog.Add(item);
-                                
-                                Console.WriteLine($"{item.ItemID}, {item.ItemName}, {item.MediaType}, {item.LateFee}, {item.DaysLate}");
+                                case "ID":
+                                    item.ItemID = int.Parse(value);
+                                    break;
+                                case "Item":
+                                    item.ItemName = value;
+                                    break;
+                                case "Media Type":
+                                    item.MediaType = value;
+                                    break;
+                                case "Late Fee":
+                                    item.LateFee = double.Parse(value,
+                                        System.Globalization.NumberStyles.Currency);
+                                    break;
+                                case "Days Late":
+                                    item.DaysLate = int.Parse(value);
+                                    break;
                             }
                         }
-                        
+
+                        CheckoutItems.checkoutCatalog.Add(item); //add after filling all fields
+                        //print the added lines
+                        Console.WriteLine($"{item.ItemID}, {item.ItemName}, {item.MediaType}, {item.LateFee}, {item.DaysLate}");
                     }
-                    
-                    
-
-                    //save loaded values into places
-
-
-                    //write out the loaded data
-                    Console.WriteLine("Loaded Items:");
-                    CheckoutItems.ViewCheckout();
                 }
+
                 catch (FileNotFoundException)
                 {
                     Console.WriteLine($"Error: File '{Itempath}' not found.");
